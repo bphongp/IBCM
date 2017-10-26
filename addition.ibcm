@@ -1,0 +1,35 @@
+C00A 000	jmp 	start 	skip around the variables
+0000 001 x 	dw 	0 	int x
+0000 002 y 	dw 	0 	int y
+0000 003 z 	dw 	0 	int z
+0000 004 sum 	dw 	0	int sum
+0000 005 zero 	dw 	0
+0001 006 one    dw      1	
+0000 007 			space for changes
+0000 008
+0000 009
+1000 00A start 	readH 	x	read x from input
+4001 00B	store	x	store value into x address(001)
+1000 00C 	readH	y   	read y from input 
+4002 00D 	store 	y	store value into y address(002)
+1000 00E 	readH	z    	read y from input
+4003 00F 	store 	z	store value into z address(003)
+B000 010			space for changes
+B000 011
+B000 012 	
+3004 013 	load 	sum 	load sum where sum
+5001 014 	add 	x	+x to accumulator(sum+=x)
+5002 015 	add 	y	+y to accumulator(sum+=y)
+5003 016 	add	z 	+z to accumulator(sum+=z)
+1800 017 	printH 	sum	print contents of acm
+D01C 018 	jmpe 	xit	jump to xit if acm=0
+C00A 019 loop	jmp 	start	jump if acm!=0 to start
+B000 01A      			space for changes
+B000 01B 	
+3001 01C xit	load	x	load print values of x,y,z
+1800 01D 	printH  x
+3002 01E	load	y
+1800 01F	printH  y
+3003 020	load 	z
+1800 021	printH  z
+0000 022	halt		end program

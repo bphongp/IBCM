@@ -1,0 +1,22 @@
+3000 000 load	load	loadit	load function
+1800 001	printH	print	prints first line
+5012 002 start	add	one	accumulator = 3001 
+4013 003	store	temp	temp=address
+4005 004	store	doit	plant instruction
+0000 005 doit	0	0				
+1800 006   	printH	print	print memory location
+3015 007	load	count			
+5012 008	add	one	count++
+4015 009	store	count	count=count++	
+6014 00A	sub	numLn   while(i < count)
+E00D 00B	jmpl	doit2   i -count<0
+D00F 00C 	jmpe	restart	i - count= 0 
+3013 00D doit2	load	temp	temp=accumulator value
+C002 00E	jmp	start	jump back to start
+3012 00F restartload	one	resetting the count for next run
+4015 010	store	count			
+1800 011	printH	print	prints count at each iteration/program is ended
+0001 012	one	dw	
+0000 013	temp	dw	temp value 
+0015 014	numLn  	dw	number of lines in program
+0001 015	count	dw	count = 1, default print

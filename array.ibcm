@@ -1,0 +1,41 @@
+C013 000	jmp 	start 	skip around the variables
+0000 001 i 	dw 	0 	int i
+0004 002 a[]	dw 	4 	int a[]
+0001 003 one	dw 	1 	
+0000 004 zero	dw 	0	
+0001 005 a[0] 	dw 	1	a[0]=1
+0003 006 a[1]   dw      3	a[1]=3
+0007 007 a[2]	dw	7	a[2]=7
+0002 008 a[3]	dw	2	a[3]=2
+0000 009 max	dw	0	int max=0
+3000 00A loadit	dw    	3000	loads 
+0000 00B curr   dw	0	int curr=0
+0004 00C size	dw   	4   	int size=4 
+B000 00D 			spaces for changes
+B000 00E 	
+B000 00F 
+B000 010			
+B000 011
+B000 012 	
+300C 013 start	load 	size	accum=size(for(int i=0;i<size;i++))
+6001 014 	sub 	i	if i<size=4
+E026 015 	jmpl	xit	if(size-i<0)jump to xit address
+D026 016 	jmpe 	xit	if(size-1=0)jump to xit address
+300A 017 	load   	loadit	begin form instruction to load a[i]
+5002 018 	add  	a[]	add a[] base
+5001 019     	add 	i    	add i to a[]
+401B 01A      	store	doit	put instruction to loadit
+0000 01B doit	dw	0
+400B 01C 	store 	curr	store value into curr=a[i]
+6009 01D 	sub	max	curr-max=accum
+E022 01E	jmpl	endl	if curr<max jump endl address
+D022 01F	jmpe  	endl	if curr=max jump endl
+300B 020	load 	curr	accumulator=curr
+4009 021	store  	max	new value max=curr
+3001 022 endl	load 	i	
+5003 023 	add	one	i++
+4001 024	store	i	store the i++ to i
+C013 025	jmp	start	loop back to start
+3009 026 xit	load	max	accum=max 
+1800 027 	printH	max	print what's in accum(max)	
+0000 028	halt		end of program
